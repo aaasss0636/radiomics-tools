@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Radiomics-tools by taznux</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Radiomics-tools</h1>
+        <p>Image processing tools for radiomics analysis</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/taznux/radiomics-tools" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/taznux/radiomics-tools/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/taznux/radiomics-tools/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="radiomics-tools" class="anchor" href="#radiomics-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Radiomics tools</h1>
+
+<p>Image processing tools and ruffus based workflow for radiomics feature analysis</p>
+
+<h2>
+<a id="install-software" class="anchor" href="#install-software" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install software</h2>
+
+<h3>
+<a id="python-35" class="anchor" href="#python-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python 3.5</h3>
+
+<ul>
+<li>Required</li>
+<li>
+<p>Script engine and useful modules</p>
+
+<p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>  </p>
+
+<blockquote>
+<p>Required modules - pandas, ruffus<br>
+Recommended module - scipy, numpy, ipython, matplotlib</p>
+
+<p>install_modules.sh or install_modules.cmd is available to install these modules.</p>
+</blockquote>
+</li>
+</ul>
+
+<h3>
+<a id="slicer-45" class="anchor" href="#slicer-45" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slicer 4.5</h3>
+
+<ul>
+<li>Recommended<br>
+</li>
+<li>
+<p>Image viewer, contour editor, simple image processing tool  </p>
+
+<p><a href="http://download.slicer.org/">http://download.slicer.org/</a></p>
+</li>
+</ul>
+
+<h3>
+<a id="to-build" class="anchor" href="#to-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To build</h3>
+
+<ul>
+<li>gcc or visual studio</li>
+<li>cmake</li>
+<li>ITK</li>
+</ul>
+
+<h2>
+<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tools</h2>
+
+<h3>
+<a id="1-dicomtools" class="anchor" href="#1-dicomtools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. DICOMTools</h3>
+
+<ol>
+<li>
+<p>DICOMTagReader - Display entire DICOM tags</p>
+
+<blockquote>
+<p>DICOMTagReader [DICOM directory]</p>
+</blockquote>
+</li>
+<li>
+<p>DICOM2NRRDConverter - DICOM to nrrd (Slicer file format)<br>
+Simple recursive converting for single patient data  </p>
+
+<blockquote>
+<p>DICOM2NRRDConverter [DICOM directory] [nrrd directory]  </p>
+</blockquote>
+
+<p>For large data  </p>
+
+<blockquote>
+<p>python DICOM2NRRDConverter.py [DICOM directory] [nrrd directory]</p>
+</blockquote>
+</li>
+<li><p>DICOM-RT2NRRDConverter - DICOM-RT to nrrd</p></li>
+</ol>
+
+<h3>
+<a id="2-contourtools" class="anchor" href="#2-contourtools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. ContourTools</h3>
+
+<ol>
+<li>STAPLEComparison - variation comparison on multiple contours</li>
+<li>ExtractBoundary</li>
+<li>GTVs2ITV</li>
+<li>HoleGenerator</li>
+<li>ROIGenerator</li>
+<li>ROI2BinImage</li>
+<li>ROICropImage</li>
+</ol>
+
+<h3>
+<a id="3-growcutsegmentation" class="anchor" href="#3-growcutsegmentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. GrowCutSegmentation</h3>
+
+<p>NoduleSegmentation - Segment small nodular objects for solid nodule and GGO</p>
+
+<blockquote>
+<p>NoduleSegmentation [InputImageFile] [SeedPoint_x] [SeedPoint_y [SeedPoint_z] [NoduleSize_long] [NoduleSize_short] [OutputImageFile]  </p>
+</blockquote>
+
+<h3>
+<a id="4-feature-extraction" class="anchor" href="#4-feature-extraction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Feature Extraction</h3>
+
+<p>FeatureExtraction - Extract image features from the nodule segmentation</p>
+
+<blockquote>
+<p>FeatureExtraction [InputImage] [LabelImage] [FeatureFile] [Label={1}]</p>
+</blockquote>
+
+<h3>
+<a id="5-python-tools" class="anchor" href="#5-python-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Python Tools</h3>
+
+<ol>
+<li>metadata.py - for handling metadata in csv or xls</li>
+<li>organize_features.py - for collecting feature data into a single csv file</li>
+</ol>
+
+<h3>
+<a id="6-matlab-tools" class="anchor" href="#6-matlab-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. MATLAB Tools</h3>
+
+<ol>
+<li>NRRD4Matlab - for handing nrrd format in MATLAB</li>
+<li>PET2SUV - for converting raw PET image to standardized uptake value(SUV)</li>
+</ol>
+
+<h3>
+<a id="7-etc" class="anchor" href="#7-etc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. ETC</h3>
+
+<ol>
+<li>RegistrationSITK - simple registration code, required SimpleITK module for python</li>
+<li>SlicerPythonExtensions - simple extensions for Slicer
+
+<ol>
+<li>InterpolateROIsEffect.py</li>
+<li>LineProfile.py</li>
+</ol>
+</li>
+</ol>
+
+<h3>
+<a id="6-lasso-svm" class="anchor" href="#6-lasso-svm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. LASSO-SVM</h3>
+
+<p>TBD - modeling code for radiomics features</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Radiomics feature extraction example for LUNGx dataset</p>
+
+<ol>
+<li>
+<p>Download DICOM images<br>
+<a href="https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM+Lung+CT+Challenge">https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM+Lung+CT+Challenge</a>  </p>
+
+<p>Download all DICOM​ images to './DATA'<br>
+You can use the included metadata files for LUNGx (TrainingSet.csv and TestSet.csv)  </p>
+</li>
+<li>
+<p>Environmental parameters<br>
+Set your parameters in run_CAD.py (recommend default setting).  </p>
+
+<blockquote>
+<p>experiment_set = 'TrainingSet'<br>
+# experiment_set = 'TestSet'<br>
+output_path = 'output'<br>
+data_path = 'DATA'<br>
+dicom_path = data_path + '/DOI'<br>
+image_path = data_path + '/' + experiment_set<br>
+nodule_info_path = './' + experiment_set + '.csv'  </p>
+</blockquote>
+</li>
+<li>
+<p>Run workflow</p>
+
+<blockquote>
+<p>$ python run.py or ./run.py</p>
+</blockquote>
+</li>
+<li>
+<p>Analysis feature data
+output files (intermediate images and feature data) will be generated in ./output  </p>
+
+<blockquote>
+<p>TrainingSet              feature_list_TrainingSet.csv
+TestSet                  feature_list_TestSet.csv</p>
+</blockquote>
+</li>
+</ol>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/taznux">taznux</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

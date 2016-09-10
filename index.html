@@ -1,36 +1,35 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Radiomics tools by taznux</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Radiomics tools</h1>
-        <p>Image processing tools for radiomics analysis</p>
-        <p class="view"><a href="https://github.com/taznux/radiomics-tools">View the Project on GitHub <small>taznux/radiomics-tools</small></a></p>
-        <ul>
-          <li><a href="https://github.com/taznux/radiomics-tools/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/taznux/radiomics-tools/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/taznux/radiomics-tools">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
+    <section class="page-header">
+      <h1 class="project-name">Radiomics tools</h1>
+      <h2 class="project-tagline">Image processing tools for radiomics analysis</h2>
+      <a href="https://github.com/taznux/radiomics-tools" class="btn">View on GitHub</a>
+      <a href="https://github.com/taznux/radiomics-tools/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/taznux/radiomics-tools/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
 <a id="radiomics-tools" class="anchor" href="#radiomics-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Radiomics tools</h1>
 
-<p>Image processing tools and ruffus based workflow for radiomics feature analysis</p>
+<p><a href="https://travis-ci.org/taznux/radiomics-tools"><img src="https://travis-ci.org/taznux/radiomics-tools.svg?branch=master" alt="Build Status"></a> <a href="https://codecov.io/gh/taznux/radiomics-tools"><img src="https://codecov.io/gh/taznux/radiomics-tools/branch/master/graph/badge.svg" alt="codecov"></a> <a href="http://waffle.io/taznux/radiomics-tools"><img src="https://badge.waffle.io/taznux/radiomics-tools.svg?label=ready&amp;title=Ready" alt="Stories in Ready"></a></p>
+
+<p>Image processing tools and ruffus based pipeline for radiomics feature analysis</p>
+
+<h2>
+<a id="super-build" class="anchor" href="#super-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Super build</h2>
+
+<p>Just run super-build.sh</p>
 
 <h2>
 <a id="install-software" class="anchor" href="#install-software" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install software</h2>
@@ -43,13 +42,12 @@
 <li>
 <p>Script engine and useful modules</p>
 
-<p><a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>  </p>
+<p><a href="http://conda.pydata.org/miniconda.html">http://conda.pydata.org/miniconda.html</a> - !recommend!<br>
+<a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
 
 <blockquote>
-<p>Required modules - pandas, ruffus<br>
-Recommended module - scipy, numpy, ipython, matplotlib</p>
-
-<p>install_modules.sh or install_modules.cmd is available to install these modules.</p>
+<p>Required modules - pandas, ruffus, SimpleITK, scipy, numpy, ipython, matplotlib
+install_modules.sh or install_modules.cmd is available to install these modules using conda.</p>
 </blockquote>
 </li>
 </ul>
@@ -68,12 +66,18 @@ Recommended module - scipy, numpy, ipython, matplotlib</p>
 </ul>
 
 <h3>
-<a id="to-build" class="anchor" href="#to-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To build</h3>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h3>
 
 <ul>
 <li>gcc or visual studio</li>
 <li>cmake</li>
-<li>ITK</li>
+<li>
+<p>ITK</p>
+
+<blockquote>
+<p>./build.sh</p>
+</blockquote>
+</li>
 </ul>
 
 <h2>
@@ -176,19 +180,19 @@ Simple recursive converting for single patient data  </p>
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>Radiomics feature extraction example for LUNGx dataset</p>
+<p>Radiomics feature extraction pipeline example for LUNGx dataset</p>
 
 <ol>
 <li>
 <p>Download DICOM images<br>
 <a href="https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM+Lung+CT+Challenge">https://wiki.cancerimagingarchive.net/display/Public/SPIE-AAPM+Lung+CT+Challenge</a>  </p>
 
-<p>Download all DICOM​ images to './DATA'<br>
+<p>Download all DICOM images to 'DATA'<br>
 You can use the included metadata files for LUNGx (TrainingSet.csv and TestSet.csv)  </p>
 </li>
 <li>
 <p>Environmental parameters<br>
-Set your parameters in run_CAD.py (recommend default setting).  </p>
+Set your parameters in script/run_lungx.py (recommend default setting).  </p>
 
 <blockquote>
 <p>experiment_set = 'TrainingSet'<br>
@@ -201,15 +205,15 @@ nodule_info_path = './' + experiment_set + '.csv'  </p>
 </blockquote>
 </li>
 <li>
-<p>Run workflow</p>
+<p>Run radiomics pipeline</p>
 
 <blockquote>
-<p>$ python run.py or ./run.py</p>
+<p>$ python script/run_lungx.py or script/run_lungx.py</p>
 </blockquote>
 </li>
 <li>
 <p>Analysis feature data
-output files (intermediate images and feature data) will be generated in ./output  </p>
+output files (intermediate images and feature data) will be generated in output  </p>
 
 <blockquote>
 <p>TrainingSet              feature_list_TrainingSet.csv
@@ -217,13 +221,15 @@ TestSet                  feature_list_TestSet.csv</p>
 </blockquote>
 </li>
 </ol>
-      </section>
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/taznux">taznux</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/taznux/radiomics-tools">Radiomics tools</a> is maintained by <a href="https://github.com/taznux">taznux</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
